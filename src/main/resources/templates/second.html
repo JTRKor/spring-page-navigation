@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두번째 페이지</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+            background: linear-gradient(135deg, #e8f0fe, #c7d9fd);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 60px 70px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(66,133,244,0.15);
+        }
+        .page-badge {
+            display: inline-block;
+            background: #4285f4;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 2.2rem; color: #1a1a2e; margin-bottom: 12px; }
+        p { color: #777; font-size: 0.95rem; margin-bottom: 40px; }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #4285f4;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 4px 14px rgba(66,133,244,0.35);
+        }
+        .back-btn:hover { background: #2b5fd9; transform: translateY(-2px); }
+        .back-btn:active { transform: scale(0.97); }
+    </style>
+</head>
+<body>
+<div class="page-card">
+    <div class="page-badge">PAGE 2</div>
+    <h1>두번째 페이지</h1>
+    <p>두번째 페이지입니다. 아래 버튼으로 메인으로 돌아가세요.</p>
+    <a href="/" class="back-btn">← 첫번째 페이지로 돌아가기</a>
+</div>
+</body>
+</html>
