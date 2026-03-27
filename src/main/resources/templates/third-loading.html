@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이동 중...</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .loading-box { text-align: center; }
+        .spinner {
+            width: 90px; height: 90px;
+            border: 6px solid rgba(255,255,255,0.1);
+            border-top-color: #34a853;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #countdown {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #34a853;
+            line-height: 1;
+            margin-bottom: 16px;
+            transition: transform 0.3s;
+        }
+        #countdown.pulse { transform: scale(1.25); }
+        h2 { font-size: 1.3rem; color: #ccc; margin-bottom: 8px; }
+        p { font-size: 0.88rem; color: #666; }
+    </style>
+</head>
+<body>
+<div class="loading-box">
+    <div class="spinner"></div>
+    <div id="countdown">5</div>
+    <h2>세번째 페이지로 이동 중...</h2>
+    <p>서버에서 Thread.sleep(5000) 대기 중입니다</p>
+</div>
+<script>
+    const countEl = document.getElementById('countdown');
+    let count = 5;
+    const timer = setInterval(() => {
+        count--;
+        countEl.textContent = count;
+        countEl.classList.add('pulse');
+        setTimeout(() => countEl.classList.remove('pulse'), 300);
+        if (count <= 0) clearInterval(timer);
+    }, 1000);
+    fetch('/api/sleep')
+        .then(res => res.text())
+        .then(() => { window.location.href = '/third'; })
+        .catch(() => { setTimeout(() => { window.location.href = '/third'; }, 5000); });
+</script>
+</body>
+</html>
